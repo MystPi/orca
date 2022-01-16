@@ -6,12 +6,26 @@ const topScope = Object.create(null);
 
 topScope.true = true;
 topScope.false = false;
+
 topScope.print = value => {
   console.log(value);
   return value;
 }
+
 topScope.input = (prompt) => {
   return readlineSync.question(prompt);
+}
+
+topScope.array = (...args) => {
+  return args;
+};
+
+topScope.element = (arr, index) => {
+  return arr[index];
+};
+
+topScope.length = (arr) => {
+  return arr.length;
 }
 
 for (let op of ['+', '-', '*', '/', '==', '<', '>', '<=', '>=']) {

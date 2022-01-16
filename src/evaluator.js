@@ -69,29 +69,6 @@ specialForms.define = (args, scope) => {
 };
 
 
-specialForms.array = (args, scope) => {
-  return [...args.map(arg => evaluate(arg))];
-};
-
-
-specialForms.element = (args, scope) => {
-  if (args.length !== 2) {
-    throw new SyntaxError('Wrong number of args to element');
-  }
-  let arr = evaluate(args[0], scope);
-  let index = evaluate(args[1], scope);
-  return arr[index];
-};
-
-
-specialForms.length = (args, scope) => {
-  if (args.length !== 1) {
-    throw new SyntaxError('Wrong number of args to length');
-  }
-  return evaluate(args[0], scope).length;
-}
-
-
 specialForms.fun = (args, scope) => {
   if (!args.length) {
     throw new SyntaxError('Functions need a body');
