@@ -8,6 +8,4 @@ function run(program) {
 }
 
 
-exports.run = run;
-exports.parse = parse;
-exports.evaluate = evaluate;
+module.exports = {run, parse, evaluate}
