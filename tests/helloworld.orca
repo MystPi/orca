@@ -1,0 +1,8 @@
+do(
+  print("Hello, world!"),
+  define(pswd, input("What is the password? ")),
+  if (==(pswd, "0rc4"),
+    print("Welcome!"),
+    print("Try again.")
+  )
+)
