@@ -24,6 +24,9 @@ do(
 )
 ```
 
+## Online Orca Editor
+You can write and save Orca programs with syntax highlighting at https://mystpi.github.io/orca.
+
 ## Installation
 Orca can be installed via `npm`.
 ```bash
