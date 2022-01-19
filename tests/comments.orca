@@ -1,4 +1,0 @@
-#do(
-  print("Hello, world!")#,
-  #print("bye") # ...
-#)

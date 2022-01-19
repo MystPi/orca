@@ -1,9 +1,0 @@
-do(
-  define(adder, fun(a,
-    fun(b,
-      +(a, b)
-    )
-  )),
-  define(addTo10, adder(10)),
-  print(addTo10(5))
-)
