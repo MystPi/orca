@@ -25,15 +25,8 @@ function parseExpression(program) {
 
 
 function skipSpace(string) {
-  let first = string.search(/(?<!#.*?)\S/);
-  if (first === -1) return '';
-  string = string.slice(first);
-  if (string[0] === '#') {
-    first = string.search(/\n/);
-    return first !== -1 ? skipSpace(string.slice(first)) : '';
-  } else {
-    return string;
-  }
+  const match = string.match(/^(\s*|#.*)*/);
+  return string.slice(match[0].length);
 }
 
 
