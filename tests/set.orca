@@ -1,0 +1,7 @@
+do(
+  define(x, 1),
+  fun(define(x, 5))(),
+  print(x),
+  fun(set(x, 5))(),
+  print(x)
+)

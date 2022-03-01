@@ -69,6 +69,25 @@ specialForms.define = (args, scope) => {
 };
 
 
+specialForms.set = (args, scope) => {
+  if (args.length !== 2 || args[0].type !== 'word') {
+    throw new SyntaxError('Incorrect use of set');
+  }
+
+  let value = evaluate(args[1], scope);
+  const name = args[0].name;
+
+  do {
+    if (Object.prototype.hasOwnProperty.call(scope, name)) {
+      scope[name] = value;
+      return value;
+    }
+  } while (scope = Object.getPrototypeOf(scope));
+
+  throw new ReferenceError(`Setting a non-existant binding: ${name}`);
+}
+
+
 specialForms.fun = (args, scope) => {
   if (!args.length) {
     throw new SyntaxError('Functions need a body');
