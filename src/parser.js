@@ -11,7 +11,7 @@ function parseExpression(program) {
       type: 'value',
       value: Number(match[0])
     };
-  } else if (match = /^[^\s(),#"]+/.exec(program)) {
+  } else if (match = /^[^\s(){},;#"]+/.exec(program)) {
     expr = {
       type: 'word',
       name: match[0]
@@ -32,12 +32,14 @@ function skipSpace(string) {
 
 function parseApply(expr, program) {
   program = skipSpace(program);
-  if (program[0] !== '(') {
+  if (!(program[0] === '(' || program[0] === '{')) {
     return {
       expr: expr,
       rest: program
     };
   }
+
+  const closing = {'(': ')', '{': '}'}[program[0]];
 
   program = skipSpace(program.slice(1));
   expr = {
@@ -45,14 +47,14 @@ function parseApply(expr, program) {
     operator: expr,
     args: []
   };
-  while (program[0] !== ')') {
+  while (program[0] !== closing) {
     let arg = parseExpression(program);
     expr.args.push(arg.expr);
     program = skipSpace(arg.rest);
-    if (program[0] === ',') {
+    if (program[0] === ',' || program[0] === ';') {
       program = skipSpace(program.slice(1));
-    } else if (program [0] !== ')') {
-      throw new SyntaxError("Expected ',' or ')'");
+    } else if (program [0] !== closing) {
+      throw new SyntaxError(`Expected a separator or '${closing}'`);
     }
   }
 

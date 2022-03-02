@@ -1,0 +1,13 @@
+# ; means ,
+# {} means ()
+
+do {
+  define(x, 1);
+
+  while(<(x, 11), do {
+    print(x);
+    set(x, +(x, 1));
+  });
+
+  print("Done!"); # Trailing separators are fine
+}

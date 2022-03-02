@@ -78,14 +78,14 @@ specialForms.set = (args, scope) => {
   const name = args[0].name;
 
   do {
-    if (Object.prototype.hasOwnProperty.call(scope, name)) {
+    if (Object.hasOwn(scope, name)) {
       scope[name] = value;
       return value;
     }
   } while (scope = Object.getPrototypeOf(scope));
 
   throw new ReferenceError(`Setting a non-existant binding: ${name}`);
-}
+};
 
 
 specialForms.fun = (args, scope) => {
