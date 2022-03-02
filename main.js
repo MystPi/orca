@@ -14,8 +14,8 @@ const editor = CodeMirror(document.getElementById('area'), {
   lineNumbers: true,
   matchBrackets: true,
   autoCloseBrackets: {
-    pairs: '()""',
-    explode: '()""'
+    pairs: '(){}""',
+    explode: '(){}'
   },
   extraKeys: {
     Tab: function(cm) {
